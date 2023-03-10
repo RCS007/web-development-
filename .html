@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup Page</title>
+	<style>
+		body {
+			background-color: #F2F2F2;
+		}
+		form {
+			background-color: #FFFFFF;
+			padding: 20px;
+			width: 500px;
+			margin: 0 auto;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+			font-family: Arial, sans-serif;
+			box-sizing: border-box;
+		}
+		h1 {
+			text-align: center;
+			font-size: 36px;
+			color: #333333;
+			margin-bottom: 20px;
+		}
+		label {
+			display: block;
+			font-size: 16px;
+			color: #666666;
+			margin-bottom: 5px;
+		}
+		input[type=text], input[type=password] {
+			padding: 10px;
+			width: 100%;
+			border-radius: 5px;
+			border: none;
+			margin-bottom: 20px;
+			box-sizing: border-box;
+		}
+		input[type=submit] {
+			background-color: #4CAF50;
+			color: #FFFFFF;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			float: right;
+		}
+		.error-message {
+			color: #FF0000;
+			font-size: 14px;
+			margin-top: 5px;
+		}
+	</style>
+</head>
+<body>
+	<form id="signup-form" onsubmit="return validateForm()">
+		<h1>Signup</h1>
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username" placeholder="Enter your username">
+		<div id="username-error" class="error-message"></div>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" placeholder="Enter your password">
+		<div id="password-error" class="error-message"></div>
+		<label for="confirm-password">Confirm Password:</label>
+		<input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password">
+		<div id="confirm-password-error" class="error-message"></div>
+		<input type="submit" value="Submit">
+	</form>
+	<script>
+		function validateForm() {
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+			var confirm_password = document.getElementById("confirm-password").value;
+			var usernameError = document.getElementById("username-error");
+			var passwordError = document.getElementById("password-error");
+			var confirmError = document.getElementById("confirm-password-error");
+			var isValid = true;
+			
+			if (username === "") {
+				usernameError.innerHTML = "Please enter a username";
+				isValid = false;
+			} else {
+				usernameError.innerHTML = "";
+			}
+			
+			if (password === "") {
+				passwordError.innerHTML = "Please enter a password";
+				isValid = false;
+			} else if (password.length < 8) {
+				passwordError.innerHTML = "Password must be at least 8 characters";
+				isValid = false;
+			} else {
+				passwordError.innerHTML = "";
+			}
+			
+			if (confirm_password === "") {
+				confirmError.innerHTML = "Please confirm
